@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <!-- Обязательные метатеги -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Admin's Panel</title>
+</head>
+</head>
+<body style="height: 100vh"></body>
+<!-- верхняя панель -->
+<nav class="navbar navbar-dark bg-dark">
+    <div class="col-11 text-white">
+            <h5 th:text="${user.getUsername()} + ' with roles: ' + ${user.getAllUserRoles()}"></h5>
+        </div>
+    <div class="col-1">
+        <a class="btn-link text-secondary" href="/logout" type="submit">Logout</a>
+    </div>
+</nav>
+<!-- левая панель -->
+<div class="container-fluid h-100 p-0">
+    <div class="row h-100 m-0">
+        <div class="col-2 p-0">
+            <nav class="nav flex-column nav-pills">
+                <br>
+                <a class="nav-link active" data-toggle="tab" href="#UserInfo"
+                   aria-controls="UserInfo">User</a>
+            </nav>
+        </div>
+        <div class="col-10 bg-light tab-content">
+            <div class="collapse multi-collapse fade show active" id="UserInfo">
+
+                <br>
+                <h1>User information-page</h1>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="h5">About user</span>
+                    </div>
+                    <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Age</th>
+                                <th scope="col">Role</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <td th:text="${user.getId()}">ID</td>
+                                <td th:text="${user.getUsername()}">Username</td>
+                                <td th:text="${user.getLastName()}">LastName</td>
+                                <td th:text="${user.getAge()}">Age</td>
+                                <td th:text="${user.getAllUserRoles()}">Role</td>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            </div>
+    </div>
+</div>
+</body>
+</html>
