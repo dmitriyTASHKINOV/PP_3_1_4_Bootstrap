@@ -52,13 +52,10 @@
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <div role="tabpanel"
-                         th:class="'tab-pane fade' + (${activeTab == 'usersTable'} ? ' show active' : '')"
-                         id="usersTable">
+                    <div role="tabpanel" th:class="'tab-pane fade ' + (${activeTab == 'usersTable'} ? 'show active' : '')" id="usersTable">
                         <h4 class="mt-3">All users</h4>
                         <table class="table table-striped">
                             <thead>
-                            <hr/>
                             <tr>
                                 <th>ID</th>
                                 <th>Username</th>
@@ -70,7 +67,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="userIter : ${users}">
+                            <tbody th:each="userIter : ${users}">
                                 <td th:utext="${userIter.getId()}"></td>
                                 <td th:utext="${userIter.getUsername()}"></td>
                                 <td th:utext="${userIter.getEmail()}"></td>
@@ -122,9 +119,6 @@
                                                         <input type="text" name="username"
                                                                class="form-control" id="usernameEdit"
                                                                th:value="${userIter.username}"/>
-                                                        <!--                                                        <div style="color: red" th:if="${#fields.hasErrors('*{username}')}"-->
-                                                        <!--                                                             th:errors="*{username}">Username error-->
-                                                        <!--                                                        </div>-->
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="passEdit" class="col-form-label">Password</label>
@@ -135,7 +129,8 @@
                                                     <div class="mb-3">
                                                         <label for="EmailEdit" class="col-form-label">Email</label>
                                                         <div class="input-group">
-                                                            <input type="email" name="email" class="form-control" id="EmailEdit" th:value="${userIter.getEmail()}"
+                                                            <input type="email" name="email"
+                                                                   class="form-control" id="EmailEdit" th:value="${userIter.getEmail()}"
                                                                    required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
                                                                    title="Please enter a valid email address" aria-describedby="emailFeedback">
                                                             <div class="invalid-feedback" id="emailFeedback">

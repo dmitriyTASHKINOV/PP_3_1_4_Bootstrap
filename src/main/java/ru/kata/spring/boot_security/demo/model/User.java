@@ -17,6 +17,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -43,9 +44,17 @@ public class User implements UserDetails {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     @Fetch(FetchMode.JOIN)
-    private Set<Role> roles;
+    private List<Role> roles;
 
     public User() {
+    }
+
+    public User(String username, String password, String email, int age,List<Role> roles) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.age = age;
+        this.roles = roles;
     }
 
     public User(String username, String email, int age) {
